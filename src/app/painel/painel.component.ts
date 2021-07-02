@@ -16,6 +16,8 @@ export class PainelComponent implements OnInit {
   public rodada: number = 0;
   public rodadaFrase: Frase;
 
+  public progresso: number = 0;
+
   constructor() {
     console.log(this.frases);
     this.rodadaFrase = this.frases[this.rodada]
@@ -34,9 +36,17 @@ export class PainelComponent implements OnInit {
    */
   public verificarResposta(): void {
     console.log('Verificar resposta: ', this.resposta);
-    // Trocar frase
-    this.rodada++
-    this.rodadaFrase = this.frases[this.rodada];
+    if (this.rodadaFrase.frasePtBr.toLowerCase() == this.resposta.toLowerCase()) {
+      
+          // Trocar frase
+          this.rodada++
+          this.rodadaFrase = this.frases[this.rodada];
+          this.progresso += 25;
+      
+    } else {
+      console.log('errado');
+      
+    }
   }
 
 }
