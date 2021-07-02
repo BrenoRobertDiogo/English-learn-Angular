@@ -4,22 +4,22 @@
             <div class="col-sm-6">
                 <app-progresso></app-progresso>
             </div>
-            <div class="col-sm-6">
+            <div class="col-sm-6 d-flex justify-content-end">
                 <app-tentativas></app-tentativas>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <h6>Traduza a frase:</h6>
-                <p>How are you?</p>
+                <h6>{{ instrucao }}</h6>
+                <p>{{ frases[0].fraseEng }}</p>
 
                 <div class="form-group">
-                    <textarea class="form-control"rows="3"></textarea>
+                    <textarea class="form-control"rows="3" (input)="atualizaResposta($event)"></textarea>
                 </div>
                 <div class="row">
                     <div class="d-flex justify-content-end">
 
-                        <button type="button" class="btn btn-outline-dark mt-3">Verificar</button>
+                        <button type="button" class="btn btn-outline-dark mt-3" (click)="verificarResposta()">Verificar</button>
                     </div>
                 </div>
             </div>
