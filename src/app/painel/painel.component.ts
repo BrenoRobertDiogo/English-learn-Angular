@@ -18,6 +18,10 @@ export class PainelComponent implements OnInit {
 
   public progresso: number = 0;
 
+  public tentativas: number = 3;
+
+
+
   constructor() {
     this.atualizaRodada()
   }
@@ -27,7 +31,7 @@ export class PainelComponent implements OnInit {
 
   public atualizaResposta(resposta: Event): void {
     this.resposta = (<HTMLInputElement>resposta.target).value;
-    
+
   }
 
   /**
@@ -36,18 +40,20 @@ export class PainelComponent implements OnInit {
   public verificarResposta(): void {
     console.log('Verificar resposta: ', this.resposta);
     if (this.rodadaFrase.frasePtBr.toLowerCase() == this.resposta.toLowerCase()) {
-      
-          // Trocar frase
-          this.rodada++
-          this.progresso += 100/this.frases.length;
 
-          this.atualizaRodada()
-        } else {
-      console.log('errado');
-      
+      // Trocar frase
+      this.rodada++
+      this.progresso += 100 / this.frases.length;
+
+      this.atualizaRodada()
+      return;
+    }
+    this.tentativas--
+    if (this.tentativas === -1) {
+      alert("LOSER")
     }
   }
-  
+
   /**
    * atualizaRodada
    */
