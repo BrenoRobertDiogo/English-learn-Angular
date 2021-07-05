@@ -19,6 +19,7 @@ export class PainelComponent implements OnInit {
   public progresso: number = 0;
 
   public tentativas: number = 3;
+
   @Output() public encerrarJogo = new EventEmitter()
 
 
@@ -48,7 +49,6 @@ export class PainelComponent implements OnInit {
       console.log("Tamanho:  "+ this.frases.length);
       
       if (this.rodada == this.frases.length) {
-        alert("Você ganhou :)")
         this.encerrarJogo.emit('vitoria')
         return;
       }
@@ -58,8 +58,7 @@ export class PainelComponent implements OnInit {
     }
     this.tentativas--
     if (this.tentativas === -1) {
-      alert("LOSER")
-      this.encerrarJogo.emit('vitoria')
+      this.encerrarJogo.emit('derrota')
     }
   }
 
