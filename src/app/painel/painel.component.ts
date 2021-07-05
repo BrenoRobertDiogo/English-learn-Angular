@@ -70,4 +70,6 @@ export class PainelComponent implements OnInit {
     this.resposta = '';
   }
 
+
+
 }
